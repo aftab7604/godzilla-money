@@ -35,6 +35,7 @@
     <div class="login-box" style="margin: 8% auto;">    
         <!-- /.login-logo -->
         <div class="login-box-body">
+            dont
             <?php
             if($this->session->userdata("message")) {
             $class = $this->session->userdata("message")['class'];
