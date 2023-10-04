@@ -17,7 +17,7 @@ class Cronjob_Model extends CI_Model{
 	}
 
 	public function get_downline_by_referral_id($referral_id){
-		return $this->db->where(['upline'=>$referral_id])->get("user")->result_array();
+		return $this->db->where(['upline'=>$referral_id,'status'=>1])->get("user")->result_array();
 	}
 
 	public function check_if_user_has_subscription($user_id){

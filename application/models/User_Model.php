@@ -344,7 +344,7 @@ class User_Model extends CI_Model{
 		$verified_team = 0;
 		
 		if(!empty($ids)){
-			$users = $this->db->where_in("upline",$ids)->get("user")->result_array();
+			$users = $this->db->where(['status'=>1])->where_in("upline",$ids)->get("user")->result_array();
 			if(!empty($users)): foreach($users as $k=>$v):
 			$recharge = $this->db->select("sum(credit) as recharge")->where(['user_id'=>$v['id'],'txn_for'=>'wallet-recharge'])->get("wallet_transaction")->row_array()['recharge'];
 			$users[$k]['recharge'] = (!empty($recharge) && $recharge > 0 ) ? $recharge : 0 ;
