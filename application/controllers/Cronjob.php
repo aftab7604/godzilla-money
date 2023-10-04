@@ -74,6 +74,10 @@ class Cronjob extends CI_Controller {
         if(!empty($user_ids_in_package_subscription)): foreach($user_ids_in_package_subscription as $urk=> $user_id):
             $user_id = $user_id['user_id'];
             $user = $this->Cronjob_Model->get_user_by_id($user_id);
+            if($user['status'] != 1){
+                continue;
+            }
+            
             $data[$urk]['user_id'] = $user_id;
             $data[$urk]['downline'] = array();
             $data[$urk]['downline_count'] = 0;
